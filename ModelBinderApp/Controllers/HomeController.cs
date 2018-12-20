@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModelBinderApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,29 @@ namespace ModelBinderApp.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Edit()
+        {
+            Book b = new Book { Id = 2, Name = "Война и мир", Author = "Л. Толстой", Year = 1862 };
+            return View(b);  
+        }
+
+        [HttpPost]
+        public string Edit(Book b)
+        {
+            return "Name: " + b.Name + " <br> Author: " + b.Author + "<br>Year: " + b.Year;
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public string Create (Book b)
+        {
+            return "Name: " + b.Name + " <br> Author: " + b.Author + "<br>Year: " + b.Year;
         }
 
         public ActionResult About()

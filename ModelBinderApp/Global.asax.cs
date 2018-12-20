@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ModelBinderApp.Binders;
+using ModelBinderApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +14,8 @@ namespace ModelBinderApp
     {
         protected void Application_Start()
         {
+            ModelBinders.Binders.Add(typeof(Book), new BookModelBinder());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
